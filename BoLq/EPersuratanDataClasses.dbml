@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="rtc_epersuratan" Class="EPersuratanDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=rtc_epersuratan;User ID=sa;Pooling=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="rtc_epersuratanConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ep_non_planner_book" Member="ep_non_planner_books">
+    <Type Name="ep_non_planner_book">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classification_parent_issues_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="classification_issue_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="classification_child_issues_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="non_planner_book_setup_script_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dosier_of_letter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="number_of_letter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="code_of_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="business_organizations_and_officials_type_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="number_origin_of_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="origin_of_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="about_of_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="letter_classification_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_adjective_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_state_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_origin_of_letter" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="created_date_of_letter" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="created_year_of_letter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="non_planner_book_io_type_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fill_of_letter" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="out_date_of_letter" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="out_to_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="detail_of_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="card_of_letter" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="non_planner_book_file_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="non_planner_book_category_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="storage_box" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="storage_rack" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="storage_file" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_ready" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="current_user_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ep_non_planner_book_ep_note_official" Member="ep_note_officials" ThisKey="ID" OtherKey="non_planner_book_ID" Type="ep_note_official" />
+      <Association Name="ep_non_planner_book_file_ep_non_planner_book" Member="ep_non_planner_book_file" ThisKey="non_planner_book_file_ID" OtherKey="ID" Type="ep_non_planner_book_file" IsForeignKey="true" />
+      <Association Name="ep_user_ep_non_planner_book" Member="ep_user" ThisKey="current_user_ID" OtherKey="ID" Type="ep_user" IsForeignKey="true" />
+      <Association Name="ep_classification_child_issue_ep_non_planner_book" Member="ep_classification_child_issue" ThisKey="classification_child_issues_ID" OtherKey="ID" Type="ep_classification_child_issue" IsForeignKey="true" />
+      <Association Name="ep_classification_issue_ep_non_planner_book" Member="ep_classification_issue" ThisKey="classification_issue_ID" OtherKey="ID" Type="ep_classification_issue" IsForeignKey="true" />
+      <Association Name="ep_classification_parent_issue_ep_non_planner_book" Member="ep_classification_parent_issue" ThisKey="classification_parent_issues_ID" OtherKey="ID" Type="ep_classification_parent_issue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_non_planner_book_file" Member="ep_non_planner_book_files">
+    <Type Name="ep_non_planner_book_file">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="file_path" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_original_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_size" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="file_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ep_non_planner_book_file_ep_non_planner_book" Member="ep_non_planner_books" ThisKey="ID" OtherKey="non_planner_book_file_ID" Type="ep_non_planner_book" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_note_official_file" Member="ep_note_official_files">
+    <Type Name="ep_note_official_file">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="file_path" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_original_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_size" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="file_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ep_note_official_file_ep_note_official" Member="ep_note_officials" ThisKey="ID" OtherKey="note_official_file_ID" Type="ep_note_official" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_ministry_code_abbreviation" Member="ep_ministry_code_abbreviations">
+    <Type Name="ep_ministry_code_abbreviation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ministry_echelon_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ministry_unit_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="code_abbreviation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="code_abbreviation_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ministry_sector_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ministry_subsector_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="owner_state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ministry_staff_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nav_abbreviation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="show_in_letter_directed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_user" Member="ep_users" ThisKey="ID" OtherKey="ministry_code_abbreviation_ID" Type="ep_user" />
+      <Association Name="ep_ministry_code_abbreviation_ep_note_official" Member="ep_note_officials" ThisKey="ID" OtherKey="structure_from_ID" Type="ep_note_official" />
+      <Association Name="ep_ministry_code_abbreviation_ep_note_official1" Member="ep_note_officials1" ThisKey="ID" OtherKey="structure_to_ID" Type="ep_note_official" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official" Member="ep_letter_officials" ThisKey="ID" OtherKey="letter_structure_conceptor_ID" Type="ep_letter_official" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official1" Member="ep_letter_officials1" ThisKey="ID" OtherKey="letter_structure_owner_ID" Type="ep_letter_official" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official_second_destination" Member="ep_letter_official_second_destinations" ThisKey="ID" OtherKey="ministry_code_abbreviation_ID" Type="ep_letter_official_second_destination" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official_effluent" Member="ep_letter_official_effluents" ThisKey="ID" OtherKey="ministry_code_abbreviation_ID" Type="ep_letter_official_effluent" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official_primary_destination" Member="ep_letter_official_primary_destinations" ThisKey="ID" OtherKey="ministry_code_abbreviation_ID" Type="ep_letter_official_primary_destination" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_users" Member="ep_users">
+    <Type Name="ep_user">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_full_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="user_nip" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="user_phone" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="user_mail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="user_photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_gender" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ministry_code_abbreviation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ep_user_ep_non_planner_book" Member="ep_non_planner_books" ThisKey="ID" OtherKey="current_user_ID" Type="ep_non_planner_book" />
+      <Association Name="ep_user_ep_note_official" Member="ep_note_officials" ThisKey="ID" OtherKey="current_user_ID" Type="ep_note_official" />
+      <Association Name="ep_user_ep_letter_official" Member="ep_letter_officials" ThisKey="ID" OtherKey="letter_conceptor_ID" Type="ep_letter_official" />
+      <Association Name="ep_user_ep_letter_official1" Member="ep_letter_officials1" ThisKey="ID" OtherKey="letter_current_owner_ID" Type="ep_letter_official" />
+      <Association Name="ep_ministry_code_abbreviation_ep_user" Member="ep_ministry_code_abbreviation" ThisKey="ministry_code_abbreviation_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_classification" Member="ep_classifications">
+    <Type Name="ep_classification">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classification_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="ep_classification_ep_classification_parent_issue" Member="ep_classification_parent_issues" ThisKey="ID" OtherKey="classification_ID" Type="ep_classification_parent_issue" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_classification_child_issues" Member="ep_classification_child_issues">
+    <Type Name="ep_classification_child_issue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="child_issues_code" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="child_issues_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="classification_issue_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ep_classification_child_issue_ep_non_planner_book" Member="ep_non_planner_books" ThisKey="ID" OtherKey="classification_child_issues_ID" Type="ep_non_planner_book" />
+      <Association Name="ep_classification_child_issue_ep_letter_official" Member="ep_letter_officials" ThisKey="ID" OtherKey="classification_child_issues_ID" Type="ep_letter_official" />
+      <Association Name="ep_classification_issue_ep_classification_child_issue" Member="ep_classification_issue" ThisKey="classification_issue_ID" OtherKey="ID" Type="ep_classification_issue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_classification_issue" Member="ep_classification_issues">
+    <Type Name="ep_classification_issue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="issue_code" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="issue_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="classification_parent_issues_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ep_classification_issue_ep_non_planner_book" Member="ep_non_planner_books" ThisKey="ID" OtherKey="classification_issue_ID" Type="ep_non_planner_book" />
+      <Association Name="ep_classification_issue_ep_classification_child_issue" Member="ep_classification_child_issues" ThisKey="ID" OtherKey="classification_issue_ID" Type="ep_classification_child_issue" />
+      <Association Name="ep_classification_issue_ep_letter_official" Member="ep_letter_officials" ThisKey="ID" OtherKey="classification_issue_ID" Type="ep_letter_official" />
+      <Association Name="ep_classification_parent_issue_ep_classification_issue" Member="ep_classification_parent_issue" ThisKey="classification_parent_issues_ID" OtherKey="ID" Type="ep_classification_parent_issue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_classification_parent_issues" Member="ep_classification_parent_issues">
+    <Type Name="ep_classification_parent_issue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="parent_issues_code" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="parent_issues_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="classification_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ep_classification_parent_issue_ep_non_planner_book" Member="ep_non_planner_books" ThisKey="ID" OtherKey="classification_parent_issues_ID" Type="ep_non_planner_book" />
+      <Association Name="ep_classification_parent_issue_ep_classification_issue" Member="ep_classification_issues" ThisKey="ID" OtherKey="classification_parent_issues_ID" Type="ep_classification_issue" />
+      <Association Name="ep_classification_parent_issue_ep_letter_official" Member="ep_letter_officials" ThisKey="ID" OtherKey="classification_parent_issues_ID" Type="ep_letter_official" />
+      <Association Name="ep_classification_ep_classification_parent_issue" Member="ep_classification" ThisKey="classification_ID" OtherKey="ID" Type="ep_classification" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_note_official" Member="ep_note_officials">
+    <Type Name="ep_note_official">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="structure_from_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="structure_to_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="note_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="note_about" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="current_user_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="revision" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="last_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="non_planner_book_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="note_official_file_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="note_month" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="note_year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="note_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="note_code" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="structure_owner_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="state_io" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="state_publish" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="note_official_source_file_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="note_official_group" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="state_freeze" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ep_user_ep_note_official" Member="ep_user" ThisKey="current_user_ID" OtherKey="ID" Type="ep_user" IsForeignKey="true" />
+      <Association Name="ep_non_planner_book_ep_note_official" Member="ep_non_planner_book" ThisKey="non_planner_book_ID" OtherKey="ID" Type="ep_non_planner_book" IsForeignKey="true" />
+      <Association Name="ep_note_official_file_ep_note_official" Member="ep_note_official_file" ThisKey="note_official_file_ID" OtherKey="ID" Type="ep_note_official_file" IsForeignKey="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_note_official" Member="ep_ministry_code_abbreviation" ThisKey="structure_from_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_note_official1" Member="ep_ministry_code_abbreviation1" ThisKey="structure_to_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_letter_official" Member="ep_letter_officials">
+    <Type Name="ep_letter_official">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="letter_about" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="letter_type_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_structure_owner_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_current_owner_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_iv_state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="echelon_iii_state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="echelon_ii_state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="echelon_i_state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="minister_state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="letter_conceptor_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_official_file_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="last_update" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="echelon_iv_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_iii_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_ii_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_i_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="minister_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_structure_conceptor_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_iv_abbrevation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_iii_abbrevation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_ii_abbrevation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="echelon_i_abbrevation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_code" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="letter_card" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="letter_dossier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="letter_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="classification_parent_issues_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="classification_issue_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="classification_child_issues_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ep_letter_official_ep_letter_official_second_destination" Member="ep_letter_official_second_destinations" ThisKey="ID" OtherKey="letter_official_ID" Type="ep_letter_official_second_destination" />
+      <Association Name="ep_letter_official_ep_letter_official_effluent" Member="ep_letter_official_effluents" ThisKey="ID" OtherKey="letter_official_ID" Type="ep_letter_official_effluent" />
+      <Association Name="ep_letter_official_ep_letter_official_primary_destination" Member="ep_letter_official_primary_destinations" ThisKey="ID" OtherKey="letter_official_ID" Type="ep_letter_official_primary_destination" />
+      <Association Name="ep_letter_official_ep_letter_official_revision" Member="ep_letter_official_revisions" ThisKey="ID" OtherKey="letter_official_ID" Type="ep_letter_official_revision" />
+      <Association Name="ep_classification_child_issue_ep_letter_official" Member="ep_classification_child_issue" ThisKey="classification_child_issues_ID" OtherKey="ID" Type="ep_classification_child_issue" IsForeignKey="true" />
+      <Association Name="ep_classification_issue_ep_letter_official" Member="ep_classification_issue" ThisKey="classification_issue_ID" OtherKey="ID" Type="ep_classification_issue" IsForeignKey="true" />
+      <Association Name="ep_classification_parent_issue_ep_letter_official" Member="ep_classification_parent_issue" ThisKey="classification_parent_issues_ID" OtherKey="ID" Type="ep_classification_parent_issue" IsForeignKey="true" />
+      <Association Name="ep_user_ep_letter_official" Member="ep_user" ThisKey="letter_conceptor_ID" OtherKey="ID" Type="ep_user" IsForeignKey="true" />
+      <Association Name="ep_user_ep_letter_official1" Member="ep_user1" ThisKey="letter_current_owner_ID" OtherKey="ID" Type="ep_user" IsForeignKey="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official" Member="ep_ministry_code_abbreviation" ThisKey="letter_structure_conceptor_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official1" Member="ep_ministry_code_abbreviation1" ThisKey="letter_structure_owner_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+      <Association Name="ep_letter_official_file_ep_letter_official" Member="ep_letter_official_file" ThisKey="letter_official_file_ID" OtherKey="ID" Type="ep_letter_official_file" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_letter_official_second_destination" Member="ep_letter_official_second_destinations">
+    <Type Name="ep_letter_official_second_destination">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="letter_official_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ministry_code_abbreviation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="second_destination" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="ep_letter_official_ep_letter_official_second_destination" Member="ep_letter_official" ThisKey="letter_official_ID" OtherKey="ID" Type="ep_letter_official" IsForeignKey="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official_second_destination" Member="ep_ministry_code_abbreviation" ThisKey="ministry_code_abbreviation_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_letter_official_effluent" Member="ep_letter_official_effluents">
+    <Type Name="ep_letter_official_effluent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="letter_official_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ministry_code_abbreviation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="destination_effluent" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="ep_letter_official_ep_letter_official_effluent" Member="ep_letter_official" ThisKey="letter_official_ID" OtherKey="ID" Type="ep_letter_official" IsForeignKey="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official_effluent" Member="ep_ministry_code_abbreviation" ThisKey="ministry_code_abbreviation_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_letter_official_file" Member="ep_letter_official_files">
+    <Type Name="ep_letter_official_file">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="file_path" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_original_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="file_size" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="file_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ep_letter_official_file_ep_letter_official" Member="ep_letter_officials" ThisKey="ID" OtherKey="letter_official_file_ID" Type="ep_letter_official" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_letter_official_primary_destination" Member="ep_letter_official_primary_destinations">
+    <Type Name="ep_letter_official_primary_destination">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="letter_official_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ministry_code_abbreviation_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="primary_destination" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="ep_ministry_code_abbreviation_ep_letter_official_primary_destination" Member="ep_ministry_code_abbreviation" ThisKey="ministry_code_abbreviation_ID" OtherKey="ID" Type="ep_ministry_code_abbreviation" IsForeignKey="true" />
+      <Association Name="ep_letter_official_ep_letter_official_primary_destination" Member="ep_letter_official" ThisKey="letter_official_ID" OtherKey="ID" Type="ep_letter_official" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ep_letter_official_revision" Member="ep_letter_official_revisions">
+    <Type Name="ep_letter_official_revision">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="letter_official_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="revision_memo" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="revision_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ep_letter_official_ep_letter_official_revision" Member="ep_letter_official" ThisKey="letter_official_ID" OtherKey="ID" Type="ep_letter_official" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

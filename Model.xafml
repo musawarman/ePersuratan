@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemAspNetModule" Version="15.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="15.2.7.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="AppDossierBiroUmum_ListView_Disposisi_Masuk">
+      <Sorting>
+        <SortProperty Id="@f29f867e-c9d2-4598-8b76-0729c727e8a9" Removed="True" />
+      </Sorting>
+    </ListView>
+    <ListView Id="AppDossierBiroUmum_ListView_Surat_Masuk">
+      <Columns>
+        <ColumnInfo Id="ChekedStateDate" SortOrder="Descending" />
+      </Columns>
+      <Sorting>
+        <SortProperty Id="@bab57dba-aa9e-4386-b877-92efb5e8f699" Removed="True" />
+        <SortProperty Id="urutSurat" Removed="True" />
+      </Sorting>
+    </ListView>
+  </Views>
+</Application>
